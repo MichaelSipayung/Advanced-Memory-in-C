@@ -9,4 +9,5 @@ void understandingStruct();
 void minimizeStorange();
 void thirdDimensionPOin();
 void larikPointer();
+void pointerToPointer();
 //pointer as an array

@@ -8,6 +8,7 @@ int main(){
     minimizeStorange();
     thirdDimensionPOin();
     larikPointer();
+    pointerToPointer();
     return 0;
 }
 
@@ -203,4 +204,10 @@ void larikPointer(){
     {
         free(alloc[i]);
     }
+}
+void pointerToPointer(){
+    int a =12,*point=&a,**pointPoint=&point;
+    printf("1.Address \t: %p add value \t: %d \n", a,a);
+    printf("2.Address \t: %p add value \t: %d \n", point,*point);
+    printf("3.Address \t: %p add value \t: %d \n", pointPoint,**pointPoint);
 }

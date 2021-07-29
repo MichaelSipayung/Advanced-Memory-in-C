@@ -31,7 +31,9 @@ int main(){
     showAr(twelve,arrayLength);    
     passArray(twelve,arrayLength);
     showAr(twelve,arrayLength);    
-
+    char myName[]="michael SipayunG";
+    modifyString(myName,strlen(myName)-1);
+    printf("Result \t: %s\n", myName);
 }
 
 double absolute(double param){
@@ -135,4 +137,20 @@ void showAr(float data[],int length){
         ++n;
     }
     printf("]\n");
+}
+void modifyString(char data[],int n){
+    while (n!=-1)
+    {
+        if (isupper(data[n]))
+        {
+            data[n]=tolower(data[n]);
+        }
+        else if (islower(data[n]))
+        {
+            data[n]=toupper(data[n]);
+        }
+        
+        --n;
+    }
+    
 }

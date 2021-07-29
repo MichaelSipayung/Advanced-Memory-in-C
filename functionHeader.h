@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 double absolute(double);
 long int fact(int);
 long int sum(int );
@@ -13,3 +14,4 @@ void swap(int*,int*);
 void exchange(char[]);
 void passArray(float[],int);
 void showAr(float[],int);
+void modifyString(char[],int);

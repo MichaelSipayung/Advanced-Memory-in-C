@@ -34,6 +34,22 @@ int main(){
     char myName[]="michael SipayunG";
     modifyString(myName,strlen(myName)-1);
     printf("Result \t: %s\n", myName);
+    int dataSort[]={1,2,1,2,3,1,2,4,1,2,1,2,3,1};
+    bubleSort(dataSort,sizeof(dataSort)/sizeof(*dataSort));
+    showArIn(dataSort,sizeof(dataSort)/sizeof(*dataSort));
+    int matriks[][3]={1,2,3,4,5,6,7,8,9};
+    secDimen(matriks,3,3);
+    showMat(matriks,3,3);    
+    char checkVowel[] ="mciahel sipayung";
+    int hMati=0;
+    int hHidup=0;
+    pointerAsParam(checkVowel,&hHidup,&hMati);
+    printf("Name \t: %s\n", checkVowel);
+    printf("Total Vowel \t : %d\n", hHidup);
+    printf("Total Non Vowel \t : %d\n", hMati);
+    int reportData[]={1,2,3,4,5,111,231,123,1231,76,345,123,31,1,23,1231,31,31,133,23,45,64};
+    int great=100,less=90,allAr=sizeof(reportData)/sizeof(*reportData);
+    anotherSample(reportData,&great,&less,allAr);
 }
 
 double absolute(double param){
@@ -153,4 +169,92 @@ void modifyString(char data[],int n){
         --n;
     }
     
+}
+void bubleSort(int data[],int n){
+    for (size_t j = 0; j < n-1; ++j)
+    {
+        for (size_t i = 0; i < n-j-1; ++i)
+        {
+            if (data[i]>data[i+1])
+            {
+                swap(&data[i],&data[i+1]);//exchange two data 
+            }   
+        }   
+    }    
+}
+
+void showArIn(int data[],int length){
+    int n =0;
+    printf("data\t: [");
+    while (n!=(length))
+    {
+        printf("%d |",data[n]);
+        ++n;
+    }
+    printf("]\n");    
+}
+void secDimen(int data[][3],int baris ,int kolom){
+    for (size_t i = 0; i < baris; ++i)
+    {
+        for (size_t j= 0; j < kolom; ++j)
+        {
+            data[i][j]=data[i][j]-1;
+        }   
+    }    
+}
+void showMat(int data[][3],int baris,int kolom){
+    printf("result\n");
+    for (size_t i = 0; i < baris; ++i)
+    {
+        for (size_t j= 0; j < kolom; ++j)
+        {
+            printf ("%d |",data[i][j]);
+        }
+        printf("\n");   
+    }
+}
+void pointerAsParam(char *str,int*hidup,int*mati){
+    while (*str)
+    {
+        if (*str=='a'||*str=='u'||*str=='i'||*str=='e'||*str=='o'||*str=='A'||*str=='O'||*str=='U'||
+            *str=='E'||*str=='O')
+        {
+            (*hidup)++;
+        }
+        else if ((*str>='a'&&*str<='z')||(*str>='A'&&*str<='Z'))
+        {
+            (*mati)++;
+        }           
+        ++str;
+    }    
+}
+void anotherSample(int data[],int*great,int*small,int total){
+    int tempGreat[100]={0}, tempSmall[100]={0};
+    int startGreat=0,startSmall=0;
+    while (total!=-1)
+    {
+        if (data[total]>*great)
+        {
+            tempGreat[startGreat]=data[total];
+            ++startGreat;
+        }
+        else if (data[total]<*small)
+        {
+            tempSmall[startSmall]=data[total];
+            ++startSmall;
+        }   
+        --total;
+    }
+    printf("value less than \t: %d \n", *small);
+    for (size_t i = 0; i < startSmall; ++i)
+    {
+        printf("%d |", tempSmall[i]);
+    }
+    printf("\n");
+    printf("value greater than \t: %d \n", *great);
+    for (size_t i = 0; i < startGreat; ++i)
+    {
+        printf("%d |", tempGreat[i]);
+    }
+    printf("\n");
 }

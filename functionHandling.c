@@ -50,6 +50,48 @@ int main(){
     int reportData[]={1,2,3,4,5,111,231,123,1231,76,345,123,31,1,23,1231,31,31,133,23,45,64};
     int great=100,less=90,allAr=sizeof(reportData)/sizeof(*reportData);
     anotherSample(reportData,&great,&less,allAr);
+    accumulateSample(reportData,&allAr);
+    //proof for small arr : like induction 
+    int smallSamle[]={1,2,3,4,5};
+    allAr=sizeof(smallSamle)/sizeof(*smallSamle);
+    accumulateSample(smallSamle,&allAr);
+    int (*allocDynamic)[3];
+    allocDynamic= malloc(3*3*sizeof(*allocDynamic));
+    for (size_t i = 0; i < 3; ++i)
+    {
+        for (size_t j = 0; j < 3; ++j)
+        {
+            *(*(allocDynamic+i)+j)=i;
+        }
+    }
+    int row=3,cols=3;
+    printf("Before modify \n");
+    ShowpointerAsTwoDim(allocDynamic,&row,&cols);
+    pointerAsTwoDim(allocDynamic,&row,&cols);
+    printf("After modify \n");
+    ShowpointerAsTwoDim(allocDynamic,&row,&cols);
+    free(allocDynamic);
+    //array ..pointer
+    int *alocate[3];//3 : row to be allocate
+    //note for array..pointer , row is fixed, and cols is col
+    
+    int bar=3, column=3;
+    for (size_t i = 0; i < bar; ++i)
+    {
+        alocate[i]=malloc(column*sizeof(int)); //allocate matrix 3x3
+        
+    }
+    printf("Before modify\n");
+    fillArrayPoint(alocate,&bar,&column);
+    showArrayPoint(alocate,&bar,&column);
+    printf("After Modify\n");
+    arrayPoint(alocate,&bar,&column);
+    showArrayPoint(alocate,&bar,&column);
+
+    for (size_t i = 0; i < bar; ++i)
+    {
+        free(alocate[i]);
+    }    
 }
 
 double absolute(double param){
@@ -257,4 +299,61 @@ void anotherSample(int data[],int*great,int*small,int total){
         printf("%d |", tempGreat[i]);
     }
     printf("\n");
+}
+void accumulateSample(int*data,int*total){
+    int accum=0;
+    *total=*total-1;
+    while ((*total)!=-1)
+    {
+        accum+=(*(data+(*total)));
+        --(*total);
+    }
+    printf("Total value\t: %d\n", accum);
+}
+void pointerAsTwoDim( int (*data)[3],int *baris,int *column){
+    for (size_t i = 0; i < *baris; ++i)
+    {
+        for (size_t j = 0; j < *column; ++j)
+        {
+            *(*(data+i)+j)=*(*(data+i)+j)-1;
+        }    
+    }    
+}
+void ShowpointerAsTwoDim( int (*data)[3],int *baris,int *column){
+    for (size_t i = 0; i < *baris; ++i)
+    {
+        for (size_t j = 0; j < *column; ++j)
+        {
+            printf("%d |",*(*(data+i)+j));
+        }
+        printf("\n");    
+    }    
+}
+void arrayPoint(int*data[3],int*row,int*cols){
+    for (size_t i = 0; i < *row; ++i)
+    {
+        for (size_t j = 0; j < *cols; ++j)
+        {
+            *(data[i]+j)-=1;
+        }
+    }    
+}
+void fillArrayPoint(int*data[3],int*row,int*cols){
+    for (size_t i = 0; i < *row; ++i)
+    {
+        for (size_t j = 0; j < *cols; ++j)
+        {
+            *(data[i]+j)=i;
+        }
+    }
+}
+void showArrayPoint(int*data[3],int*row,int*cols){
+    for (size_t i = 0; i < *row; ++i)
+    {
+        for (size_t j = 0; j < *cols; ++j)
+        {
+            printf("%d| ",*(data[i]+j));
+        }
+        printf("\n");
+    }
 }

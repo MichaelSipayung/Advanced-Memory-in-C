@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include <stdlib.h>
 double absolute(double);
 long int fact(int);
 long int sum(int );
@@ -22,3 +23,10 @@ void secDimen(int[][3],int ,int);
 void showMat(int[][3],int ,int);
 void pointerAsParam(char*,int*,int*);
 void anotherSample(int [],int*,int*,int );
+void accumulateSample(int*,int*);
+void pointerAsTwoDim( int (*)[3],int *,int *);
+void ShowpointerAsTwoDim( int (*)[3],int *,int *);
+//prototype for array..pointer
+void arrayPoint(int*[3],int*,int*);
+void fillArrayPoint(int*[3],int*,int*);
+void showArrayPoint(int*[3],int*,int*);

@@ -30,3 +30,7 @@ void ShowpointerAsTwoDim( int (*)[3],int *,int *);
 void arrayPoint(int*[3],int*,int*);
 void fillArrayPoint(int*[3],int*,int*);
 void showArrayPoint(int*[3],int*,int*);
+long int recursion(int);
+void quickSort( int[],int ,int );
+int fibonaciRec(int);
+int iterativeFibonac(int);

@@ -91,7 +91,16 @@ int main(){
     for (size_t i = 0; i < bar; ++i)
     {
         free(alocate[i]);
-    }    
+    }
+    printf("Call recursion, factorial value of 5! \t: %d\n", recursion(5));    
+    //initialized array 
+    int dataIsbn[]={1,2,3,4,5,2,1,2,1,333,1,2,3};
+    quickSort(dataIsbn,0,sizeof(dataIsbn)/sizeof(*dataIsbn));
+    printf("After short the data  \n");
+    showArIn(dataIsbn,sizeof(dataIsbn)/sizeof(*dataIsbn));
+    printf("fibonaci (4) \t: %d\n", fibonaciRec(4));
+    printf("Iteratif fibonaci (4) \t: %d\n", iterativeFibonac(4));
+
 }
 
 double absolute(double param){
@@ -356,4 +365,61 @@ void showArrayPoint(int*data[3],int*row,int*cols){
         }
         printf("\n");
     }
+}
+long int recursion(int n){
+    if (n<=1)
+    {
+        return 1;
+    }
+    return (n*recursion(n-1));    
+}
+void quickSort( int x[],int bawah ,int atas){
+    int i,j,k;
+    int sementara;
+    while (atas>bawah)
+    {
+        i= bawah;
+        j=atas;
+        sementara=x[bawah];
+        while (i<j)
+        {
+            while (x[j]>sementara)
+            {
+                --j;
+            }
+            x[i]=x[j];
+            while (i<j&&x[i]<=sementara)
+            {
+                ++i;
+            }
+            x[j]=x[i];
+        }
+        x[i]=sementara;
+        quickSort(x,bawah,i-1);
+        bawah=i+1;   
+    }    
+}
+int fibonaciRec(int n){
+    if (n<2) //terminate condition 
+    {
+        return n;
+    }
+    return (fibonaciRec(n-2)+fibonaciRec(n-1));
+    
+}
+int iterativeFibonac(int n){
+    int low_Fibo, high_Fibo,x,i;
+    if (n<2)
+    {
+        return(n);
+    }
+    low_Fibo=0;
+    high_Fibo=1;
+    for ( i = 2; i <= n; ++i)
+    {
+        x=low_Fibo;
+        low_Fibo=high_Fibo;
+        high_Fibo=x+low_Fibo;
+    }
+    return high_Fibo;
 }

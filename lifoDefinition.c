@@ -2,7 +2,7 @@
 #define LIFO_DECLARATION
 #include "lifo.h"
 void menu(short int*pilih){
-    clrscr();
+    //clrscr();
     printf("\t<<< Menu Utama >>>\n");
     printf("1.Membuat daftar berkait baru\n");
     printf("2.Membuat Node baru\n");

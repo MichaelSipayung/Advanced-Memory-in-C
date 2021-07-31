@@ -1,6 +1,7 @@
 #include "lifo.h"
-#include "lifoDefenition.c"
+#include "lifoDefinition.c"
 int main(){
+    callSwicthMenu();
     return 0;
 }
 //implementatation 

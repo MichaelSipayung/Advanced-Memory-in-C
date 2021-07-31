@@ -193,3 +193,31 @@ returnStruct fillData={
 //function for return reference 
 void returnRefModify(returnStruct*);
 void returnRefShow(returnStruct*);
+//pass by value l- return struct 
+typedef struct 
+{
+    char *name;
+    int unit;
+}mathBook;
+mathBook fillMath={
+    "mathematics",13
+};
+void showResultMath(mathBook);
+mathBook hereTheReturn(mathBook);
+
+//return pointer struct as function
+typedef struct 
+{
+    char *kode;
+    int unit;
+}pointStructReturn;
+pointStructReturn fillPoint[5]={
+    "0xmath",2,
+    "0xcal",34,
+    "0xalg",45,
+    "0xDisc",89,
+    "oxStat",5
+};
+pointStructReturn *searchData(pointStructReturn*);  
+void showResPointStruct();
+pointStructReturn *pointVariable;

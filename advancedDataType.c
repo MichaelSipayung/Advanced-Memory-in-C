@@ -62,8 +62,15 @@ int main(){
     printf("call another function to modify the original structure\n");
     returnRefModify(&fillData);//return to struct 
     returnRefShow(&fillData);//call the original data
-
-
+    printf("Test return value, case return struct from function\n");
+    printf("before assign\n");
+    showResultMath(fillMath);
+    printf("After assign, case substract unit book\n");
+    fillMath = hereTheReturn(fillMath);//return struct to variable fill math
+    showResultMath(fillMath);
+    //return the data, with one condition that unit less tahn 10 
+    printf("Return pointer \n");
+    showResPointStruct();
 
 }
 void enumDay(){
@@ -160,5 +167,35 @@ void returnRefShow(returnStruct*showModify){
     printf("Nama barang\t: %s\n", showModify->kode);
 }
 
+void showResultMath(mathBook viewMath){
+    printf("Name\t: %s\n",viewMath.name);
+    printf("Unit\t: %d\n",viewMath.unit);
+}
+mathBook hereTheReturn(mathBook substractUnit){
+    substractUnit.unit=substractUnit.unit-1;
+    return(substractUnit);//return modify struct
+}
+pointStructReturn *searchData(pointStructReturn*lessTen){
+    if (lessTen->unit>10)
+    {
+        return(lessTen);
+    }
+    else{
+        return NULL;
+    }
+    
+}
+void showResPointStruct(){
+    for (size_t i = 0; i < 6; ++i)
+    {
+        pointVariable =searchData(&fillPoint[i]);
+        if (pointVariable) //take a reference , compute the array using slicing(indexing)
+        {
+            printf("book name\t: %s\n",pointVariable->kode);
+            printf("unit sold\t: %d\n",pointVariable->unit);
+        }
+        //another is null
+    }    
+}
 
 

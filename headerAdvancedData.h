@@ -156,4 +156,40 @@ struct bookNum
     char *name;
     int sold;
 }bookIs,*refBook=&bookIs;
+//pass structure to function 
+struct  psdUnit
+{
+    char kode[5];
+    int unit;
+};
+struct psdUnit persedianS={"mike",12};
+void passStruct(char[],int);
+//test pass by reference 
+void byRef(int*,int*);
+struct 
+{
+    int harga,total;
+}original,*reference=&original;
 
+struct newPsd{
+    int unit;
+    int harga;
+};
+struct newPsd newPersedian={
+    12,34
+};
+void tampilHasil(struct newPsd );
+//pointer call 
+void tampilHasilPointer(struct newPsd*);
+//implement return struct 
+typedef struct{
+    char*kode;
+    int unit;
+}returnStruct;
+returnStruct fillData={
+    "ebook",
+    12
+};
+//function for return reference 
+void returnRefModify(returnStruct*);
+void returnRefShow(returnStruct*);

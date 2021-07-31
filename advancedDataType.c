@@ -45,8 +45,25 @@ int main(){
     printf("Current book \t: %d\n", refBook->sold);
     refBook->name="math";
     printf("Current name book \t: %s\n", refBook->name);
+    //call struct through function
+    passStruct(persedianS.kode,persedianS.unit);
+    int tempStr=12,tempStructT=89;
+    reference->harga=12;
+    reference->total=90;
+    printf("Call by reference\n");
+    byRef(&reference->harga,&reference->total);
+    printf("Pass all structure through a function\n");
+    printf("Pass all member test \n");
+    tampilHasil(newPersedian);//pass structure 
+    printf("call using pointer\n");
+    tampilHasilPointer(&newPersedian);//call the address of struct newpersedian 
+    printf("Original data\n");  
+    returnRefShow(&fillData);//call the original data
+    printf("call another function to modify the original structure\n");
+    returnRefModify(&fillData);//return to struct 
+    returnRefShow(&fillData);//call the original data
 
-    
+
 
 }
 void enumDay(){
@@ -117,6 +134,30 @@ void traverseAll(){
 }
 void fillTheElement(){
     //fill the element to allow travserse through pointer 
+}
+void passStruct(char kode[],int unit){
+    printf ("nama barang\t: %s\n",kode);
+    printf ("total barang\t: %d\n",unit);
+}
+void byRef(int*harga,int*total){
+    printf ("harga barang\t: %d\n",*harga);
+    printf ("total barang\t: %d\n",*total);
+}
+void tampilHasil(struct newPsd nameTopass){
+    printf("Harga\t: %d\n", nameTopass.harga);
+    printf("Unit\t: %d\n", nameTopass.unit);
+}
+void tampilHasilPointer(struct newPsd*namePoint){
+    printf("Harga\t: %d\n", namePoint->harga);
+    printf("Unit\t: %d\n", namePoint->unit);
+}
+
+void returnRefModify(returnStruct*modifyData){
+    modifyData->unit=modifyData->unit-1;//return reference we pass the address
+}
+void returnRefShow(returnStruct*showModify){
+    printf("Harga\t: %d\n", showModify->unit);
+    printf("Nama barang\t: %s\n", showModify->kode);
 }
 
 

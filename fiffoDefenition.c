@@ -1,6 +1,6 @@
-#ifndef LIFO_DECLARATION
-#define LIFO_DECLARATION
-#include "lifo.h"
+#ifndef FIFO_DECLARAION
+#define FIFO_DECLARAION
+#include "fifo.h"
 void menu(short int*pilih){
     //clrscr();
     printf("\t<<< Menu Utama >>>\n");
@@ -21,7 +21,7 @@ void menu(short int*pilih){
     printf("\n\n");
 }
 void buatBaru(){
-    if (simpulAkhir)//test whether the linked list isn't null.. another word it's contain a value 
+    if (simpulAwal)//test whether the linked list isn't null.. another word it's contain a value 
     {
         printf("Daftar berkait sudah berisi\n");
         do
@@ -34,7 +34,7 @@ void buatBaru(){
             return;
         }
     }
-   simpulAkhir=NULL;//free all linnk .. make linked list has no point to other  
+   simpulAwal=NULL;//free all linnk .. make linked list has no point to other  
    printf("\nSudah dihapus\n");
 }
 void tambahNode(){
@@ -54,9 +54,16 @@ void tambahNode(){
         printf("Nama langganan\t ?");gets(simpulBaru->nama);
         printf("Nilai Piutang\t ?");scanf("%f",&piutLgn);
         simpulBaru->piutang=piutLgn;
-
-        simpulBaru->Berikut=simpulAkhir;//current link linked to the last link before
-        simpulAkhir=simpulBaru;//move the curent data remember lifo(last in first out)
+        simpulBaru->Berikut=NULL;
+        if (simpulAwal==NULL)
+        {
+            simpulAwal=simpulBaru;//masukan node pertama 
+        }
+        else{
+            simpulAkhir->Berikut=simpulBaru;
+        }
+        simpulAkhir=simpulBaru;
+        
         do
         {
             printf("Masukan data lagi (Y/T) ?");
@@ -84,7 +91,7 @@ simpul_Lgn *cari_Node(char*kodeLgn){
 void tampilkanNode(){
     char kodeLgn[6];
     printf("Kode Langganan ? ");scanf("%s",kodeLgn);
-    simpulCari=simpulAkhir;
+    simpulCari=simpulAwal;
     cari_Node(kodeLgn);
     if (simpulCari==NULL)
     {
@@ -96,11 +103,11 @@ void tampilkanNode(){
     }
 }
 void tampilkanDaftar(simpul_Lgn*simpulIni,int n ){
-    if (simpulAkhir==NULL)
+    if (simpulAwal==NULL)
     {
         printf("DAFTAR BERKAIT TIDAK BERISI\n");
     }
-    if (n<=1&&simpulAkhir!=NULL)
+    if (n<=1&&simpulAwal!=NULL)
     {
         printf("-------------------------------\n");
         printf("No.Urut\tKode\tNama\tPiutang\n");
@@ -116,7 +123,7 @@ void hapusNode(){
     simpul_Lgn *simpulSebelum;
     char kodeLgn[6];
     printf("Kode Langganan ?");scanf("%s",kodeLgn);
-    simpulCari=simpulAkhir;
+    simpulCari=simpulAwal;
     simpulSebelum=cari_Node(kodeLgn);
     if (simpulCari==NULL)
     {
@@ -135,7 +142,7 @@ void hapusNode(){
         if (jawab=='y'||jawab||'Y')
         {
             if(simpulSebelum==NULL){
-                simpulAkhir=simpulAkhir->Berikut;
+                simpulAwal=simpulAwal->Berikut;
             }
             else{
                 simpulSebelum->Berikut=simpulCari->Berikut;

@@ -1,5 +1,5 @@
-#ifndef LIFO_HEADER
-#define LIFO_HEADER
+#ifndef FIFO_HEADER
+#define FIFO_HEADER
 #include<stdio.h>
 #include<conio.h>
 #include<string.h>
@@ -19,6 +19,7 @@ void tampilkanNode();
 void tampilkanDaftar(simpul_Lgn*,int );
 void hapusNode();
 simpul_Lgn *cari_Node(char*);
+simpul_Lgn *simpulAwal=NULL;
 simpul_Lgn *simpulAkhir=NULL;
 simpul_Lgn *simpulCari=NULL;
 void callSwicthMenu();
